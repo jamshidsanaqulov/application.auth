@@ -26,11 +26,11 @@ public class UserService {
         return userRepository.existsByLogin(login);
     }
 
-    public List<User> getAll(){
+    public List<User> getAll() {
         return userRepository.findAll();
     }
 
-    public List<User> findAll(String name){
+    public List<User> findAll(String name) {
         return userRepository.findByName(name);
     }
 }

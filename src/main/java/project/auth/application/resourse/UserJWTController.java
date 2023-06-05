@@ -17,7 +17,7 @@ import project.auth.application.security.JwtTokenProvider;
 import javax.validation.Valid;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/v1/auth")
 public class UserJWTController {
     private final JwtTokenProvider jwtTokenProvider;
     private final AuthenticationManagerBuilder authenticationManagerBuilder;
@@ -26,7 +26,7 @@ public class UserJWTController {
         this.jwtTokenProvider = jwtTokenProvider;
         this.authenticationManagerBuilder = authenticationManagerBuilder;
     }
-    @PostMapping("/authenticate")
+    @PostMapping("/login")
     public ResponseEntity authorize(@Valid @RequestBody LoginVM loginVM){
         UsernamePasswordAuthenticationToken authenticationToken=
                 new UsernamePasswordAuthenticationToken(loginVM.getLogin(),loginVM.getPassword());

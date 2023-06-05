@@ -2,7 +2,6 @@ package project.auth.application.resourse;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import project.auth.application.entity.User;
 import project.auth.application.service.UserService;
@@ -19,11 +18,11 @@ public class UserResource {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<?> create(@RequestBody User user){
-        if(userService.existByLogin(user.getLogin())){
+    public ResponseEntity<?> create(@RequestBody User user) {
+        if (userService.existByLogin(user.getLogin())) {
             return new ResponseEntity("Bu login mavjud", HttpStatus.BAD_REQUEST);
         }
-        if(checkPasswordLength(user.getPassword())){
+        if (checkPasswordLength(user.getPassword())) {
             return new ResponseEntity("Password uzunligi 4 dan kam", HttpStatus.BAD_REQUEST);
         }
         User result = userService.save(user);
@@ -31,17 +30,18 @@ public class UserResource {
     }
 
     @GetMapping("/get-all")
-    public ResponseEntity getAll(){
-        List<User> users =userService.getAll();
-        return ResponseEntity.ok(users);
-    }
-    @GetMapping("/search")
-    public ResponseEntity getAll(@RequestParam String name){
-        List <User> users = userService.findAll(name);
+    public ResponseEntity getAll() {
+        List<User> users = userService.getAll();
         return ResponseEntity.ok(users);
     }
 
-    private boolean checkPasswordLength(String password){
-        return password.length()<=4;
+    @GetMapping("/search")
+    public ResponseEntity getAll(@RequestParam String name) {
+        List<User> users = userService.findAll(name);
+        return ResponseEntity.ok(users);
+    }
+
+    private boolean checkPasswordLength(String password) {
+        return password.length() <= 4;
     }
 }
