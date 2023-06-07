@@ -1,5 +1,4 @@
 package project.auth.application.resourse;
-
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -36,7 +35,6 @@ public class UserJWTController {
         HttpHeaders headers =new HttpHeaders();
         headers.add("Authorization","Bearer " + jwt);
         return new ResponseEntity<>(new JWTToken(jwt),headers, HttpStatus.OK);
-
     }
     static class JWTToken{
         private String idToken;
