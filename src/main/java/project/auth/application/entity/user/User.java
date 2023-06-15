@@ -1,12 +1,11 @@
-package project.auth.application.entity;
+package project.auth.application.entity.user;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
+import project.auth.application.entity.Role;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
-import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 

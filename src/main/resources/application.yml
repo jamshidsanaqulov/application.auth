@@ -15,3 +15,10 @@ jwt:
   token:
     secret: hellojwttoken
     validity: 86400000
+
+#Swagger UI
+springdoc:
+  swagger-ui:
+    path: /v1/application-auth/index.html
+  api-docs:
+    path: /v1/application-auth/api-docs
