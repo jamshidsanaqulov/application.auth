@@ -3,6 +3,7 @@ package project.auth.application.resourse.vm;
 import project.auth.application.entity.user.User;
 
 public class UserDto {
+    private Long id;
     private String login;
     private String firstName;
     private String lastName;
@@ -10,11 +11,20 @@ public class UserDto {
 
     public static UserDto minResponse(User user) {
         UserDto dto = new UserDto();
+        dto.setId(user.getId());
         dto.setLogin(user.getLogin());
         dto.setFirstName(user.getFirstName());
         dto.setLastName(user.getLastName());
         dto.setBirthday(user.getBirthday());
         return dto;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getLogin() {

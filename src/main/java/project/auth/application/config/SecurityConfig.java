@@ -34,12 +34,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(customUserDetailService)
-                .passwordEncoder(passwordEncoder());
+        auth.userDetailsService(customUserDetailService).passwordEncoder(passwordEncoder());
     }
 
     private final String[] OPEN_API = {
             "/v1/application-auth/api-docs/**",
+            "/v1/application-auth/index.html",
             "/v1/application-auth/swagger-ui/**",
             "/api/v1/auth/register",
             "/api/v1/auth/login"
@@ -58,7 +58,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .authorizeRequests()
                 .antMatchers(OPEN_API).permitAll()
-                .antMatchers("/api/v1/auth/get-all").hasAnyRole("ADMIN")
+                .antMatchers("/api/v1/users/get-all").hasRole("ADMIN")
+                .antMatchers("/api/v1/users/search").hasRole("ADMIN")
                 .anyRequest()
                 .authenticated()
                 .and()

@@ -1,5 +1,6 @@
 package project.auth.application.entity.user;
 
+import org.apache.commons.lang3.function.Failable;
 import project.auth.application.entity.Role;
 
 import javax.persistence.*;
@@ -93,4 +94,5 @@ public class User implements Serializable {
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
     }
+
 }

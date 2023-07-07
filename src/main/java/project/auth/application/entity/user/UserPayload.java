@@ -1,11 +1,20 @@
 package project.auth.application.entity.user;
 
+import project.auth.application.common.Event;
+
+import javax.validation.constraints.NotBlank;
+
 public class UserPayload {
 
+    @NotBlank
     private String login;
+    @NotBlank
     private String password;
+    @NotBlank
     private String firstName;
+    @NotBlank
     private String lastName;
+    @NotBlank
     private String birthday;
 
     public UserPayload() {

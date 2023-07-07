@@ -50,8 +50,9 @@ public class SwaggerConfig {
         configuration.setAllowedOriginPatterns(List.of("*"));
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"));
         configuration.setAllowedHeaders(List.of("*"));
-        configuration.setExposedHeaders(List.of("x-auth-token"));
+        configuration.setExposedHeaders(List.of("*"));
         source.registerCorsConfiguration("/**", configuration);
+        source.registerCorsConfiguration("/api/v1/users/**",configuration);
         return new CorsFilter(source);
     }
 }
